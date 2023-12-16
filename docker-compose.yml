@@ -1,0 +1,17 @@
+version: '3.1'
+volumes:
+  pg_pandev:
+
+services:
+  pandev_db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - pg_pandev:/var/lib/postgres/data/
+      - ./db/init.sql:/docker-entrypoint-initdb.d/data.sql
+    ports:
+      - "5432:5432"
