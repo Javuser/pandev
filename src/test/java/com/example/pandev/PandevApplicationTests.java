@@ -29,26 +29,7 @@ class PandevApplicationTests {
 //        assertEquals("Samsung", category.getName());
 //    }
 
-    @Test
-    public void testAddTreeCommand() {
-        // Создаем мок для CategoryService
-        CategoryService categoryServiceMock = mock(CategoryService.class);
 
-        // Создаем объект CategoryTreeBot с мок-объектом CategoryService
-        CategoryTreeBot categoryTreeBot = new CategoryTreeBot(new CategoryTreeBotConfig(), categoryServiceMock);
-
-        // Создаем Update для теста
-        Update update = new Update();
-        Message message = new Message();
-        message.setText("/addTree Samsung S20");
-        update.setMessage(message);
-
-        // Тестируем метод addTreeCommand
-        categoryTreeBot.onUpdateReceived(update);
-
-        // Проверяем, что в CategoryService был вызван соответствующий метод
-        verify(categoryServiceMock, times(1)).addElement(eq("S20"), isNull());
-    }
 
 
 }

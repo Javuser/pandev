@@ -28,7 +28,7 @@ public class CategoryTreeBot extends TelegramLongPollingBot {
     @Autowired
     private CategoryService categoryService;
 
-    public CategoryTreeBot(CategoryTreeBotConfig categoryTreeBotConfig, CategoryService categoryServiceMock) {
+    public CategoryTreeBot(CategoryTreeBotConfig categoryTreeBotConfig) {
         this.categoryTreeBotConfig = categoryTreeBotConfig;
         List<BotCommand> listOfCommands = new ArrayList();
         listOfCommands.add(new BotCommand("/start", "Нажмите чтоб запустить бота"));
@@ -70,21 +70,16 @@ public class CategoryTreeBot extends TelegramLongPollingBot {
                     viewCommand(chatId);
                     break;
 
-                    //это по сути /addTree
+
 
                 case "/deleteTree":
                     deleteTreeCommand(messageArray, chatId);
-//                    sendMessage(chatId, message);
                     break;
 
+
+                    //это по сути /addTree
                 default:
-//                    if(message.startsWith("/addTree")) {
-                        //sendMessage(chatId, message);
-                        addTreeCommand(message.split("\\s+"), chatId);
-//                    }
-//                    }else if(message.startsWith("/deleteTree")) {
-                      //  deleteTreeCommand(message.split("\\s+"), chatId);
-//                    }
+                    addTreeCommand(message.split("\\s+"), chatId);
                     break;
                 case "/help":
                     sendMessage(chatId, HELP_TEXT);
