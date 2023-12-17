@@ -1,6 +1,7 @@
 package com.example.pandev.service;
 
 import com.example.pandev.entity.Category;
+import com.example.pandev.model.CategoryModel;
 
 import java.util.List;
 
@@ -16,4 +17,5 @@ public interface CategoryService {
     void deleteElement(String elementName, Category parent);
 
     Category getCategoryByName(String categoryName);
+    List<CategoryModel> buildCategoriesModelTree();
 }
